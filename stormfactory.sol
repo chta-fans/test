@@ -1,5 +1,5 @@
 /**
- *Submitted for verification at BscScan.com on 2020-09-27
+ *Submitted for verification at Etherscan.io on 2020-05-04
 */
 
 pragma solidity =0.5.16;
@@ -13,7 +13,6 @@ interface IUniswapV2Factory {
     function getPair(address tokenA, address tokenB) external view returns (address pair);
     function allPairs(uint) external view returns (address pair);
     function allPairsLength() external view returns (uint);
-    function pairCodeHash() external pure returns (bytes32);
 
     function createPair(address tokenA, address tokenB) external returns (address pair);
 
@@ -117,8 +116,8 @@ interface IUniswapV2Callee {
 contract UniswapV2ERC20 is IUniswapV2ERC20 {
     using SafeMath for uint;
 
-    string public constant name = 'Stormswap LP Token';
-    string public constant symbol = 'STLP';
+    string public constant name = 'Uniswap V2';
+    string public constant symbol = 'UNI-V2';
     uint8 public constant decimals = 18;
     uint  public totalSupply;
     mapping(address => uint) public balanceOf;
@@ -411,10 +410,6 @@ contract UniswapV2Factory is IUniswapV2Factory {
 
     function allPairsLength() external view returns (uint) {
         return allPairs.length;
-    }
-
-    function pairCodeHash() external pure returns (bytes32) {
-        return keccak256(type(UniswapV2Pair).creationCode);
     }
 
     function createPair(address tokenA, address tokenB) external returns (address pair) {
